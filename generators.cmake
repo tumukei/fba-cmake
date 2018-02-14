@@ -713,7 +713,7 @@ endforeach()
 file(APPEND ${CMAKE_SOURCE_DIR}/src/dep/generated/license.rtf "}")
 endfunction()
 
-function fixup_apprc()
+function(fixup_apprc)
 # fixup app.rc for gnu
 # custom run windres as cmake fuxes up the cmdline for it
 
