@@ -1,0 +1,198 @@
+diff -drw -U 1 orig/src/burn/devices/seibusnd.cpp new/src/burn/devices/seibusnd.cpp
+--- orig/src/burn/devices/seibusnd.cpp	2017-04-12 22:49:02.000000000 +0300
++++ new/src/burn/devices/seibusnd.cpp	2018-02-02 02:57:20.760012685 +0200
+@@ -33,2 +33,4 @@
+ 
++#include <math.h>
++
+ static UINT8 main2sub[2];
+diff -drw -U 1 orig/src/burn/driver.h new/src/burn/driver.h
+--- orig/src/burn/driver.h	2017-04-12 22:49:02.000000000 +0300
++++ new/src/burn/driver.h	2018-02-14 05:32:41.040012980 +0200
+@@ -4,2 +4,5 @@
+ 
++#include <string.h>
++#include <stdlib.h>
++
+ #ifndef DRIVER_H
+@@ -7,7 +10,2 @@
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <string.h>
+-#include <math.h>
+-
+ #if !defined (_WIN32)
+diff -drw -U 1 orig/src/burn/drv/galaxian/gal_sound.cpp new/src/burn/drv/galaxian/gal_sound.cpp
+--- orig/src/burn/drv/galaxian/gal_sound.cpp	2015-04-30 21:17:45.000000000 +0300
++++ new/src/burn/drv/galaxian/gal_sound.cpp	2018-02-02 02:53:03.530012563 +0200
+@@ -2,2 +2,4 @@
+ 
++#include <math.h>
++
+ INT16* pFMBuffer;
+diff -drw -U 1 orig/src/burn/drv/konami/d_mystwarr.cpp new/src/burn/drv/konami/d_mystwarr.cpp
+--- orig/src/burn/drv/konami/d_mystwarr.cpp	2017-07-09 11:42:09.000000000 +0300
++++ new/src/burn/drv/konami/d_mystwarr.cpp	2018-02-02 02:44:50.895012328 +0200
+@@ -37,2 +37,4 @@
+  #include <cmath>
++#else
++#include <math.h>
+ #endif
+diff -drw -U 1 orig/src/burn/drv/konami/d_tmnt.cpp new/src/burn/drv/konami/d_tmnt.cpp
+--- orig/src/burn/drv/konami/d_tmnt.cpp	2017-07-05 21:06:30.000000000 +0300
++++ new/src/burn/drv/konami/d_tmnt.cpp	2018-02-02 02:45:47.390012355 +0200
+@@ -13,2 +13,4 @@
+ 
++#include <math.h>
++
+ static UINT8 DrvInputPort0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+diff -drw -U 1 orig/src/burn/drv/midway/d_kinst.cpp new/src/burn/drv/midway/d_kinst.cpp
+--- orig/src/burn/drv/midway/d_kinst.cpp	2017-04-12 22:48:58.000000000 +0300
++++ new/src/burn/drv/midway/d_kinst.cpp	2018-02-02 21:11:32.063849073 +0200
+@@ -549,3 +549,3 @@
+ 
+-struct BurnDriver BurnDrvKinst = {
++struct BurnDriverX BurnDrvKinst = {
+     "kinst", NULL, NULL, NULL, "1994/1995",
+@@ -574,3 +574,3 @@
+ 
+-struct BurnDriver BurnDrvKinst2 = {
++struct BurnDriverX BurnDrvKinst2 = {
+     "kinst2", NULL, NULL, NULL, "1994/1995",
+diff -drw -U 1 orig/src/burn/drv/pst90s/d_raiden2.cpp new/src/burn/drv/pst90s/d_raiden2.cpp
+--- orig/src/burn/drv/pst90s/d_raiden2.cpp	2017-03-11 23:24:34.000000000 +0200
++++ new/src/burn/drv/pst90s/d_raiden2.cpp	2018-02-02 02:49:50.035012470 +0200
+@@ -13,2 +13,4 @@
+  #include <cmath>
++#else
++#include <math.h>
+ #endif
+diff -drw -U 1 orig/src/burn/drv/taito/d_flstory.cpp new/src/burn/drv/taito/d_flstory.cpp
+--- orig/src/burn/drv/taito/d_flstory.cpp	2017-06-24 12:24:22.000000000 +0300
++++ new/src/burn/drv/taito/d_flstory.cpp	2018-02-02 02:54:42.730012610 +0200
+@@ -15,2 +15,4 @@
+ 
++#include <math.h>
++
+ static UINT8 *AllMem;
+diff -drw -U 1 orig/src/burn/drv/taito/d_taitomisc.cpp new/src/burn/drv/taito/d_taitomisc.cpp
+--- orig/src/burn/drv/taito/d_taitomisc.cpp	2017-07-05 21:06:29.000000000 +0300
++++ new/src/burn/drv/taito/d_taitomisc.cpp	2018-02-02 02:56:21.235012657 +0200
+@@ -14,2 +14,4 @@
+ 
++#include <math.h>
++
+ static UINT32 RastanADPCMPos;
+diff -drw -U 1 orig/src/burner/sdl/burner_sdl.h new/src/burner/sdl/burner_sdl.h
+--- orig/src/burner/sdl/burner_sdl.h	2015-03-18 14:27:44.000000000 +0200
++++ new/src/burner/sdl/burner_sdl.h	2018-02-14 05:36:59.410013104 +0200
+@@ -1,2 +1,2 @@
+-#include <SDL/SDL.h>
++#include <SDL.h>
+ 
+diff -drw -U 1 orig/src/burner/sdl/main.cpp new/src/burner/sdl/main.cpp
+--- orig/src/burner/sdl/main.cpp	2015-03-19 09:38:12.000000000 +0200
++++ new/src/burner/sdl/main.cpp	2018-02-14 05:39:37.500013179 +0200
+@@ -68,3 +68,2 @@
+ 
+-	bBurnUseASMCPUEmulation = 0;
+ 	bCheatsAllowed = false;
+diff -drw -U 1 orig/src/burner/sdl/support_paths.cpp new/src/burner/sdl/support_paths.cpp
+--- orig/src/burner/sdl/support_paths.cpp	2015-03-10 14:26:16.000000000 +0200
++++ new/src/burner/sdl/support_paths.cpp	2018-02-02 21:15:21.358849182 +0200
+@@ -25,2 +25,3 @@
+ TCHAR szAppBlendPath[MAX_PATH]		= _T("support\\blend\\");
++TCHAR szAppEEPROMPath[MAX_PATH]		= _T("config/games/");
+ 
+diff -drw -U 1 orig/src/burner/sdl/tchar.h new/src/burner/sdl/tchar.h
+--- orig/src/burner/sdl/tchar.h	2015-03-11 15:57:06.000000000 +0200
++++ new/src/burner/sdl/tchar.h	2018-02-14 05:40:32.505013205 +0200
+@@ -1,2 +1 @@
+-#include <stdint.h>
+ #ifdef _UNICODE
+diff -drw -U 1 orig/src/cpu/m68k/m68kcpu.c new/src/cpu/m68k/m68kcpu.c
+--- orig/src/cpu/m68k/m68kcpu.c	2017-05-08 21:02:14.000000000 +0300
++++ new/src/cpu/m68k/m68kcpu.c	2018-02-02 03:00:53.530012787 +0200
+@@ -37,2 +37,4 @@
+ 
++#include <math.h>
++
+ #include "m68kops.h"
+diff -drw -U 1 orig/src/cpu/sh2_intf.h new/src/cpu/sh2_intf.h
+--- orig/src/cpu/sh2_intf.h	2017-02-04 16:57:06.000000000 +0200
++++ new/src/cpu/sh2_intf.h	2018-02-01 21:53:49.895004002 +0200
+@@ -1,2 +1,2 @@
+-
++#include <stdint.h>
+ #ifndef FASTCALL
+diff -drw -U 1 orig/src/cpu/tms34010/tms34010.cpp new/src/cpu/tms34010/tms34010.cpp
+--- orig/src/cpu/tms34010/tms34010.cpp	2015-12-06 21:39:35.000000000 +0200
++++ new/src/cpu/tms34010/tms34010.cpp	2018-02-14 05:44:31.925013319 +0200
+@@ -20,2 +20,4 @@
+ 
++#include <cmath>
++
+ namespace tms {
+diff -drw -U 1 orig/src/cpu/tms34010/tms34010_gfx.h new/src/cpu/tms34010/tms34010_gfx.h
+--- orig/src/cpu/tms34010/tms34010_gfx.h	2015-12-06 21:39:35.000000000 +0200
++++ new/src/cpu/tms34010/tms34010_gfx.h	2018-02-14 05:47:25.395013402 +0200
+@@ -7,3 +7,2 @@
+ 
+-#include <iostream>
+ #include "tms34010.h"
+diff -drw -U 1 orig/src/cpu/tms34010/tms34010.h new/src/cpu/tms34010/tms34010.h
+--- orig/src/cpu/tms34010/tms34010.h	2015-12-06 21:39:35.000000000 +0200
++++ new/src/cpu/tms34010/tms34010.h	2018-02-14 05:46:22.320013372 +0200
+@@ -8,8 +8,2 @@
+ #include <cstdint>
+-#include <string>
+-#include <list>
+-#include <fstream>
+-#include <array>
+-#include <cmath>
+-
+ 
+@@ -501,4 +495,4 @@
+ 
+-std::string dasm(dword addr, size_t *size);
+-std::string new_dasm(dword pc, size_t *size);
++//std::string dasm(dword addr, size_t *size);
++//std::string new_dasm(dword pc, size_t *size);
+ 
+diff -drw -U 1 orig/src/cpu/tms34010_intf.cpp new/src/cpu/tms34010_intf.cpp
+--- orig/src/cpu/tms34010_intf.cpp	2015-12-06 21:39:35.000000000 +0200
++++ new/src/cpu/tms34010_intf.cpp	2018-02-02 00:46:57.120008955 +0200
+@@ -1,3 +1,2 @@
+ #include "burnint.h"
+-#include "tms34010/tms34010.h"
+ #include "tms34010_intf.h"
+diff -drw -U 1 orig/src/intf/audio/sdl/aud_sdl.cpp new/src/intf/audio/sdl/aud_sdl.cpp
+--- orig/src/intf/audio/sdl/aud_sdl.cpp	2015-03-17 17:38:08.000000000 +0200
++++ new/src/intf/audio/sdl/aud_sdl.cpp	2018-01-29 22:43:38.262586287 +0200
+@@ -2,3 +2,3 @@
+ 
+-#include <SDL/SDL.h>
++#include <SDL.h>
+ #include "burner.h"
+diff -drw -U 1 orig/src/intf/input/sdl/inp_sdl.cpp new/src/intf/input/sdl/inp_sdl.cpp
+--- orig/src/intf/input/sdl/inp_sdl.cpp	2015-03-18 09:58:08.000000000 +0200
++++ new/src/intf/input/sdl/inp_sdl.cpp	2018-01-29 22:48:03.717586413 +0200
+@@ -1,3 +1,3 @@
+ // Module for input using SDL
+-#include <SDL/SDL.h>
++#include <SDL.h>
+ 
+diff -drw -U 1 orig/src/intf/video/vid_interface.cpp new/src/intf/video/vid_interface.cpp
+--- orig/src/intf/video/vid_interface.cpp	2017-06-09 20:03:12.000000000 +0300
++++ new/src/intf/video/vid_interface.cpp	2018-02-02 02:16:48.865011526 +0200
+@@ -15,3 +15,3 @@
+ #elif defined (BUILD_SDL)
+-	extern struct VidOut VidOutSDLOpenGL;
++//	extern struct VidOut VidOutSDLOpenGL;
+ 	extern struct VidOut VidOutSDLFX;
+@@ -31,3 +31,3 @@
+ #elif defined (BUILD_SDL)
+-	&VidOutSDLOpenGL,
++//	&VidOutSDLOpenGL,
+ 	&VidOutSDLFX,
